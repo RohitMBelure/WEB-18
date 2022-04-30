@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 20px;
+      }
+      p + img {
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Frontend</h1>
+    <div id="container">
+        <!-- <div id="card">
+            <img src="" alt="">
+            <h3>Name</h3>
+            <p>role</p>
+            <img src="" alt="logo">
+        </div> -->
+    </div>
+  </body>
+</html>
+
+<script>
+  var investorsArr = JSON.parse(localStorage.getItem("investorsData"));
+  const cont = document.querySelector('#container');
+
+  
+
+  investorsArr.forEach(function(elem){
+    console.log(elem);
+    const card = document.createElement('div');
+    card.setAttribute("id", "card");
+    const image = document.createElement('img');
+    image.setAttribute("src", elem.investorImg);
+    // image.innerText=elem.investorImg
+    const Name = document.createElement('h3');
+    Name.innerText=elem.investorName
+    const role = document.createElement('p');
+    role.innerText=elem.investorRole
+    const logo = document.createElement('img');
+    logo.setAttribute("src", elem.investorCompanyLogo);
+    // logo.innerText=elem.investorCompanyLogo;
+
+    card.append(image, Name, role, logo);
+    cont.append(card)
+  })
+  
+  
+
+</script>
